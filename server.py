@@ -29,7 +29,7 @@ def parseArgs():
   Log("Parsing arguments...")
   parser = argparse.ArgumentParser(description="Implements a server that exports speedtest results in a prometheus format")
   parser.add_argument('-stale-interval', type=int, help="The interval in minutes after which a test becomes stale and needs to be rerun", default=30)
-  parser.add_argument('-port', type=int, help="The port to listen on, defaults to 5000", default=5000)
+  parser.add_argument('-port', type=int, help="The port to listen on, defaults to 5000", default=9497)
   parser.add_argument('-log-level', type=str, help="The logging level for the application", choices=["critical", "error", "warning", "info", "debug", "trace"], default="info")
   parser.add_argument('-threads', type=str, help="The number of threads to use during the test, defaults to the number of threads provided by speedtest.net", default=None)
   parser.add_argument('-v', '-verbose', action="store_true", help="Turn on verbose output")
