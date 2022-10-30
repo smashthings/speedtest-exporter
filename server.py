@@ -62,15 +62,19 @@ def RunTest():
     return
   if args.v:
     Log('VERBOSE: Running test...')
-  s = speedtest.Speedtest()
-  s.get_servers()
-  s.get_best_server()
-  s.download(threads=args.threads)
-  s.upload(threads=args.threads)
+  try:
+    s = speedtest.Speedtest()
+    s.get_servers()
+    s.get_best_server()
+    s.download(threads=args.threads)
+    s.upload(threads=args.threads)
 
-  lastCompletedRun = n
-  cachedLastResult = s.results.dict()
-  ParseMetrics()
+    lastCompletedRun = n
+    cachedLastResult = s.results.dict()
+    ParseMetrics()
+  except Exception as e:
+    Log("Last test run failed with error:")
+    print(e)
 
 def ParseMetrics():
   global cachedLastResult
