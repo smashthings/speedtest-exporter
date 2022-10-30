@@ -1,0 +1,11 @@
+FROM python:3-slim-buster
+RUN mkdir /app
+
+ENV PYTHONUNBUFFERED=0
+
+COPY server.py /app/
+COPY requirements.txt /app/
+WORKDIR /app
+RUN ln -s /usr/local/bin/python3 /usr/bin/python3 && python -m pip install -r requirements.txt
+
+ENTRYPOINT ["python3", "/app/server.py"]
