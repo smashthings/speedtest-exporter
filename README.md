@@ -18,3 +18,4 @@ services:
     network_mode: host # Change this as you like
 ```
 
+

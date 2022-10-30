@@ -36,6 +36,8 @@ steps:
   image: smasherofallthings/python-fe:latest
   commands:
   - docker push --all-tags smasherofallthings/speedtest-exporter
+  - docker manifest create smasherofallthings/speedtest-exporter:latest --amend smasherofallthings/speedtest-exporter:arm7-latest --amend smasherofallthings/speedtest-exporter:amd64-latest
+  - docker manifest push smasherofallthings/speedtest-exporter:latest
   volumes:
   - name: docker-socket
     path: /var/run/docker.sock
