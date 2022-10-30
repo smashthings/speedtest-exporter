@@ -75,7 +75,7 @@ def RunTest():
 def ParseMetrics():
   global cachedLastResult
   lines = []
-  lines = lines + GenLines('speedtest_timestamp', 'Unix timestamp for the last run.', datetime.datetime.strptime(cachedLastResult['timestamp'], "%Y-%m-%dT%H:%M:%S.%fZ"))
+  lines = lines + GenLines('speedtest_timestamp', 'Unix timestamp for the last run.', datetime.datetime.strptime(cachedLastResult['timestamp'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=datetime.timezone.utc).timestamp())
   lines = lines + GenLines('speedtest_ping', 'Ping to testing server in ms', cachedLastResult['ping'])
   lines = lines + GenLines('speedtest_download_bytes_per_second', 'Download speed in bytes/second', cachedLastResult['download'])
   lines = lines + GenLines('speedtest_download_bytes', 'Total bytes downloaded', cachedLastResult['bytes_received'])
